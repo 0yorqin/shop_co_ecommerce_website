@@ -1,16 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+import Link from "next/link";
+import Header from "@/components/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const integralCF = localFont({
+  src: "../public/fonts/integralcf-bold.otf",
+  variable: '--font-integralcf',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const satoshi = localFont({
+  src: [
+    {
+      path: '../public/fonts/Satoshi-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Satoshi-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Satoshi-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-satoshi',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +40,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isAuthenticated = false;
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${integralCF.variable} ${satoshi.variable} antialiased`}
       >
+        {!isAuthenticated && (
+          <div className="bg-black w-full py-3 text-center">
+            <p className="text-white body-regular">Sign up and get 20% off to your first order. <Link href="/sign-up" className="underline body-medium hover:opacity-70">Sign Up Now</Link></p>
+          </div>
+        )}
+        <Header />
         {children}
       </body>
     </html>

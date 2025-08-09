@@ -8,16 +8,35 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-tint: #F0F0F0;
+  --font-integralcf: var(--font-integralcf);
+  --font-satoshi: var(--font-satoshi);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.title-bold {
+  font-family: var(--font-integralcf), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1;
 }
+
+.body-regular {
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.body-medium {
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
 
 body {
   background: var(--background);
